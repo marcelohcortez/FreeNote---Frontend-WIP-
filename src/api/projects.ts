@@ -1,7 +1,17 @@
-const getProjects = () => {}
-const getProject = () => {}
-const createProject = () => {}
-const deleteProject = () => {}
-const updateProject = () => {}
+const getProjects = () => {
+  return;
+};
+const getProject = () => {
+  return;
+};
+const createProject = () => {
+  return;
+};
+const deleteProject = () => {
+  return;
+};
+const updateProject = () => {
+  return;
+};
 
 export { getProjects, getProject, createProject, deleteProject, updateProject };
