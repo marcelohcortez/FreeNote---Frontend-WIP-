@@ -1,4 +1,5 @@
-const path = require('path');
+import path from 'path';
+
 module.exports = {
   entry: './src/index.tsx',
   module: {
@@ -7,6 +8,10 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
