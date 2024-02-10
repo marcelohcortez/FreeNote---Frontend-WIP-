@@ -3,50 +3,51 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import GroupsIcon from '@mui/icons-material/Groups';
+import StickyNote2Icon from '@mui/icons-material/StickyNote2';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import WorkIcon from '@mui/icons-material/Work';
+import PersonIcon from '@mui/icons-material/Person';
+
 import { NavLink } from 'react-router-dom';
 
 export const mainListItems = (
   <>
     <ListItemButton component={NavLink} to="/budgets">
       <ListItemIcon>
-        <DashboardIcon />
+        <AccountBalanceWalletIcon />
       </ListItemIcon>
       <ListItemText primary="Budgets" />
     </ListItemButton>
 
     <ListItemButton component={NavLink} to="/clients">
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <GroupsIcon />
       </ListItemIcon>
       <ListItemText primary="Clients" />
     </ListItemButton>
     <ListItemButton component={NavLink} to="/notes">
       <ListItemIcon>
-        <PeopleIcon />
+        <StickyNote2Icon />
       </ListItemIcon>
       <ListItemText primary="Notes" />
     </ListItemButton>
     <ListItemButton component={NavLink} to="/payments">
       <ListItemIcon>
-        <BarChartIcon />
+        <PaymentsIcon />
       </ListItemIcon>
       <ListItemText primary="Payments" />
     </ListItemButton>
     <ListItemButton component={NavLink} to="/projects">
       <ListItemIcon>
-        <LayersIcon />
+        <WorkIcon />
       </ListItemIcon>
       <ListItemText primary="Projects" />
     </ListItemButton>
     <ListItemButton component={NavLink} to="/users">
       <ListItemIcon>
-        <LayersIcon />
+        <PersonIcon />
       </ListItemIcon>
       <ListItemText primary="Users" />
     </ListItemButton>
@@ -55,7 +56,7 @@ export const mainListItems = (
 
 export const secondaryListItems = (
   <>
-    <ListSubheader component="div" inset>
+    {/* <ListSubheader component="div" inset>
       Saved reports
     </ListSubheader>
     <ListItemButton>
@@ -75,6 +76,6 @@ export const secondaryListItems = (
         <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="Year-end sale" />
-    </ListItemButton>
+    </ListItemButton> */}
   </>
 );
