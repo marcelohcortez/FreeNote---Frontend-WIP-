@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { getNotes } from '../../api/notes';
 import { Note } from '../../types/note';
+import AddNewItem from '../../components/AddNewItem';
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
@@ -18,6 +19,8 @@ const Notes = () => {
   return (
     <div>
       <h1>Notes</h1>
+
+      <AddNewItem target={'notes'} />
 
       {notes &&
         notes.map((note: Note) => (

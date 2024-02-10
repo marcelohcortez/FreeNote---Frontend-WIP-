@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { getClients } from '../../api/clients';
 import { Client } from '../../types/client';
+import AddNewItem from '../../components/AddNewItem';
 
 const Clients = () => {
   const [clients, setClients] = useState([]);
@@ -18,6 +19,8 @@ const Clients = () => {
   return (
     <div>
       <h1>Clients</h1>
+
+      <AddNewItem target={'clients'} />
 
       {clients && (
         <ul>

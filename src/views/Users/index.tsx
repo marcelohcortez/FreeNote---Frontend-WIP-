@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { getUsers } from '../../api/users';
 import { User } from '../../types/user';
+import AddNewItem from '../../components/AddNewItem';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -18,6 +19,8 @@ const Users = () => {
   return (
     <div>
       <h1>Users</h1>
+
+      <AddNewItem target={'users'} />
 
       {users && (
         <ul>

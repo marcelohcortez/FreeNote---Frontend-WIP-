@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { getPayments } from '../../api/payments';
 import { Payment } from '../../types/payment';
+import AddNewItem from '../../components/AddNewItem';
 
 const Payments = () => {
   const [payments, setPayments] = useState([]);
@@ -18,6 +19,8 @@ const Payments = () => {
   return (
     <div>
       <h1>Payments</h1>
+
+      <AddNewItem target={'payments'} />
 
       {payments && (
         <ul>

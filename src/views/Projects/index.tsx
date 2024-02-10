@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { getProjects } from '../../api/projects';
 import { Project } from '../../types/project';
+import AddNewItem from '../../components/AddNewItem';
 
 const Projects = () => {
   const [projects, setProject] = useState([]);
@@ -18,6 +19,8 @@ const Projects = () => {
   return (
     <div>
       <h1>Projects</h1>
+
+      <AddNewItem target={'projects'} />
 
       {projects && (
         <ul>

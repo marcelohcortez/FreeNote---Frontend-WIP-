@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import AddNewItem from '../../components/AddNewItem';
 import { getBudgets } from '../../api/budgets';
 import { Budget } from '../../types/budget';
 
@@ -18,6 +19,7 @@ const Budgets = () => {
   return (
     <div>
       <h1>Budgets</h1>
+      <AddNewItem target={'budgets'} />
 
       {budgets && (
         <ul>
