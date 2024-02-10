@@ -4,12 +4,13 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { styled } from '@mui/material/styles';
 import { Divider, IconButton, List, Toolbar } from '@mui/material';
 
+import { OpenDrawerContext } from '../../context/OpenDrawerContext';
 import { mainListItems, secondaryListItems } from '../../components/Menu';
 
 const drawerWidth = 240;
 
 const DrawerComponent = () => {
-  const [open, setOpen] = React.useState(true);
+  const { open, setOpen } = React.useContext(OpenDrawerContext);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -57,8 +58,8 @@ const DrawerComponent = () => {
       <Divider />
       <List component="nav">
         {mainListItems}
-        <Divider sx={{ my: 1 }} />
-        {secondaryListItems}
+        {/* <Divider sx={{ my: 1 }} />
+        {secondaryListItems} */}
       </List>
     </Drawer>
   );

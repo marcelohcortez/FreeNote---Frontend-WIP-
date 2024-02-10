@@ -4,9 +4,12 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { Badge, IconButton, Toolbar, Typography } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MenuIcon from '@mui/icons-material/Menu';
+
+import { OpenDrawerContext } from '../../context/OpenDrawerContext';
 import { Link } from 'react-router-dom';
-import logo from '../../images/freenote-logo.png';
+
 import styles from './styles.module.css';
+import logo from '../../images/freenote-logo.png';
 
 const drawerWidth = 240;
 
@@ -15,7 +18,7 @@ interface AppBarProps extends MuiAppBarProps {
 }
 
 const AppBarComponent = () => {
-  const [open, setOpen] = React.useState(true);
+  const { open, setOpen } = React.useContext(OpenDrawerContext);
   const toggleDrawer = () => {
     setOpen(!open);
   };
