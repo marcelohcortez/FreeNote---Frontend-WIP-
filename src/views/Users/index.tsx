@@ -1,9 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react';
+
+import { getUsers } from '../../api/users';
+import { User } from '../../types/user';
 
 const Users = () => {
+  const [users, setUsers] = useState([]);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const data = await getUsers();
+      setUsers(data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div>USERS</div>
-  )
-}
+    <div>
+      <h1>Users</h1>
+
+      {users && (
+        <ul>
+          {users.map((user: User) => (
+            <li key={user._id}>
+              <p>User email: {user.email}</p>
+              <p>User firstName:{user.firstName}</p>
+              <p>User lastName:{user.lastName}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
 
 export default Users;
