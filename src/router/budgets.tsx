@@ -6,12 +6,14 @@ import Budgets from '../views/Budgets';
 import BudgetsSingle from '../views/Budgets/Single';
 
 const BudgetsRouter: React.FC = () => {
-    return (
-        <Routes>
-            <Route path="/" element={<Budgets />} />
-            <Route path="/:id" element={<BudgetsSingle />} />
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route>
+        <Route index element={<Budgets />} />
+        <Route path=":id" element={<BudgetsSingle />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default BudgetsRouter;

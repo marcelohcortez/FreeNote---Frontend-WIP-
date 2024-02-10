@@ -6,12 +6,14 @@ import Payments from '../views/Payments';
 import PaymentsSingle from '../views/Payments/Single';
 
 const PaymentsRouter: React.FC = () => {
-    return (
-        <Routes>
-            <Route path="/" element={<Payments />} />
-            <Route path="/:id" element={<PaymentsSingle />} />
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route path="/">
+        <Route index element={<Payments />} />
+        <Route path=":id" element={<PaymentsSingle />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default PaymentsRouter;

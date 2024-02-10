@@ -6,12 +6,14 @@ import Projects from '../views/Projects';
 import ProjectsSingle from '../views/Projects/Single';
 
 const ProjectsRouter: React.FC = () => {
-    return (
-        <Routes>
-            <Route path="/" element={<Projects />} />
-            <Route path="/:id" element={<ProjectsSingle />} />
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route path="/">
+        <Route index element={<Projects />} />
+        <Route path=":id" element={<ProjectsSingle />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default ProjectsRouter;

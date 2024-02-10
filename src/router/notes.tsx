@@ -8,8 +8,10 @@ import NotesSingle from '../views/Notes/Single';
 const ClientsRouter: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Notes />} />
-      <Route path="/:id" element={<NotesSingle />} />
+      <Route path="/">
+        <Route index element={<Notes />} />
+        <Route path=":id" element={<NotesSingle />} />
+      </Route>
     </Routes>
   );
 };
