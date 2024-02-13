@@ -14,6 +14,24 @@ const getProjects = async () => {
     throw new Error('Error: error.message');
   }
 };
+
+const getProjectsNamesAndIds = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_ENDPOINT}projects/names-and-ids`,
+    );
+
+    if (response.ok) {
+      const data = response;
+      return data.json();
+    } else {
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    throw new Error('Error: error.message');
+  }
+};
+
 const getProject = () => {
   return;
 };
@@ -27,4 +45,11 @@ const updateProject = () => {
   return;
 };
 
-export { getProjects, getProject, createProject, deleteProject, updateProject };
+export {
+  getProjects,
+  getProjectsNamesAndIds,
+  getProject,
+  createProject,
+  deleteProject,
+  updateProject,
+};
