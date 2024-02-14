@@ -26,6 +26,7 @@ const AddBudget = () => {
 
   return (
     <>
+      <h1>Add a new Budget</h1>
       {success && (
         <Alert variant="filled" severity="success">
           Budget created successfully
