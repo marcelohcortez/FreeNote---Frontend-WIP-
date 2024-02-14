@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { Alert, Typography } from '@mui/material';
 
 import validationSchema from 'validations/budgetValidation';
-import {
-  createBudget,
-  getClientsNamesAndIds,
-  getProjectsNamesAndIds,
-} from 'api';
 import { budgetFormValues } from 'types/budgetFormValues';
-import { Alert, Typography } from '@mui/material';
+import { fetches } from './fetches';
+import { handleSubmit } from './handleSubmit';
 
 const AddBudget = () => {
   const [projects, setProjects] = useState([]);
@@ -20,42 +17,12 @@ const AddBudget = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      const data = await getProjectsNamesAndIds();
-      setProjects(data);
-    };
-
-    fetchProjects();
-
-    const fetchClients = async () => {
-      const data = await getClientsNamesAndIds();
-      setClients(data);
-    };
-
-    fetchClients();
-
-    setStatuses(['Pending', 'Approved', 'Rejected', 'Paid']);
+    fetches(
+      setProjects as (data: string[]) => void,
+      setClients as (data: string[]) => void,
+      setStatuses as (data: string[]) => void,
+    );
   }, []);
-
-  const handleSubmit = async (
-    values: budgetFormValues,
-    { resetForm }: FormikHelpers<budgetFormValues>,
-  ): Promise<void> => {
-    try {
-      await createBudget(values);
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-      }, 2000);
-      resetForm();
-    } catch (error) {
-      setError(true);
-      setTimeout(() => {
-        setError(false);
-      }, 2000);
-      console.error('Failed to submit form:', error);
-    }
-  };
 
   return (
     <>
@@ -79,7 +46,7 @@ const AddBudget = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values: budgetFormValues, resetForm) => {
-          handleSubmit(values, resetForm);
+          handleSubmit(values, resetForm, setSuccess, setError);
         }}
       >
         {({ values, setFieldValue }) => (
