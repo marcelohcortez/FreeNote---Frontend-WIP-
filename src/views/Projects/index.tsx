@@ -20,7 +20,7 @@ const Projects = () => {
     <div>
       <h1>Projects</h1>
 
-      <AddNewItem target={'projects'} />
+      <AddNewItem />
 
       {projects && (
         <ul>

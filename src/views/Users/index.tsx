@@ -20,7 +20,7 @@ const Users = () => {
     <div>
       <h1>Users</h1>
 
-      <AddNewItem target={'users'} />
+      <AddNewItem />
 
       {users && (
         <ul>

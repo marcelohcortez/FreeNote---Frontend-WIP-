@@ -20,7 +20,7 @@ const Notes = () => {
     <div>
       <h1>Notes</h1>
 
-      <AddNewItem target={'notes'} />
+      <AddNewItem />
 
       {notes &&
         notes.map((note: Note) => (
