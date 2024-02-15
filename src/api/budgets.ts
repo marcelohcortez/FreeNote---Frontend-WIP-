@@ -17,8 +17,25 @@ const getBudgets = async () => {
   }
 };
 
-const getBudget = () => {
-  return;
+const getBudget = async (value: string) => {
+  try {
+    const responseBudget = await fetch(
+      `${process.env.REACT_APP_API_ENDPOINT}budgets/${value}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+    if (!responseBudget.ok) {
+      throw new Error('HTTP error ' + responseBudget.status);
+    }
+
+    return responseBudget.json();
+  } catch (error) {
+    console.error('Failed to retrieve data:', error);
+  }
 };
 
 const createBudget = async (values: budgetFormValues) => {
@@ -27,7 +44,6 @@ const createBudget = async (values: budgetFormValues) => {
       total: values.total,
       project: values.project._id,
       client: values.client._id,
-      status: values.status.status,
     };
 
     const responseBudget = await fetch(
@@ -44,22 +60,8 @@ const createBudget = async (values: budgetFormValues) => {
     if (!responseBudget.ok) {
       throw new Error('HTTP error ' + responseBudget.status);
     }
-    const requestBudgetStatus = await responseBudget.json();
 
-    const responseBudgetStatus = await fetch(
-      `${process.env.REACT_APP_API_ENDPOINT}budgets-status`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBudgetStatus),
-      },
-    );
-
-    if (!responseBudgetStatus.ok) {
-      throw new Error('HTTP error ' + responseBudgetStatus.status);
-    }
+    return responseBudget.json();
   } catch (error) {
     console.error('Failed to submit form:', error);
   }
