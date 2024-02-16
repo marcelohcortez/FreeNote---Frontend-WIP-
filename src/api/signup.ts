@@ -8,7 +8,7 @@ const signupUser = async (values: SignupFormValues) => {
       firstName: values.firstName,
       lastName: values.lastName,
     };
-    console.log(requestSignupUserValues);
+
     const responseSignupUser = await fetch(
       `${process.env.REACT_APP_API_ENDPOINT}auth/signup`,
       {
