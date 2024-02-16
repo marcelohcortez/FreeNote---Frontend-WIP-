@@ -10,7 +10,7 @@ const signupUser = async (values: SignupFormValues) => {
     };
 
     const responseSignupUser = await fetch(
-      `${process.env.REACT_APP_API_ENDPOINT}auth/signup`,
+      `${process.env.REACT_APP_API_ENDPOINT}signup`,
       {
         method: 'POST',
         headers: {
@@ -23,7 +23,8 @@ const signupUser = async (values: SignupFormValues) => {
     if (!responseSignupUser.ok) {
       throw new Error('HTTP error ' + responseSignupUser.status);
     }
-    return responseSignupUser.json();
+
+    return await responseSignupUser.json();
   } catch (error) {
     console.error('Failed to submit form:', error);
   }

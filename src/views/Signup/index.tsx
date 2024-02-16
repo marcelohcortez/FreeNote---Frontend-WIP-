@@ -6,10 +6,12 @@ import validationSchema from 'validations/signupValidation';
 import { SignupFormValues } from 'types/signupFormValues';
 import { handleSubmit } from './handleSubmit';
 import Alerts from 'components/Alerts';
+import { useAuthContext } from 'hooks/useAuthContext';
 
 const signup = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const { dispatch } = useAuthContext();
 
   return (
     <>
@@ -25,7 +27,7 @@ const signup = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values: SignupFormValues, resetForm) => {
-          handleSubmit(values, resetForm, setSuccess, setError);
+          handleSubmit(values, resetForm, setSuccess, setError, dispatch);
         }}
       >
         <Form>
