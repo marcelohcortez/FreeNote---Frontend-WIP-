@@ -79,7 +79,7 @@ const AppBarComponent = () => {
         </div>
         <div>
           <Link to="/signup">Signup</Link>
-          <Link to="/signin">Signin</Link>
+          <Link to="/login">Login</Link>
         </div>
       </Toolbar>
       {/* <IconButton color="inherit">

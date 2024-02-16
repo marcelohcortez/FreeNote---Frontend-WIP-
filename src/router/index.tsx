@@ -9,6 +9,7 @@ import PaymentsRouter from './payments';
 import ProjectsRouter from './projects';
 import UsersRouter from './users';
 import SignupRouter from './signup';
+import LoginRouter from './login';
 import NotFound from '../views/404';
 
 const Router = () => (
@@ -21,6 +22,7 @@ const Router = () => (
     <Route path="/projects/*" element={<ProjectsRouter />} />
     <Route path="/users/*" element={<UsersRouter />} />
     <Route path="/signup/*" element={<SignupRouter />} />
+    <Route path="/login/*" element={<LoginRouter />} />
     {/* <Route path="*" element={<NotFound />} /> */}
   </Routes>
 );
