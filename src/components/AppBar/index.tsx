@@ -4,12 +4,12 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { Badge, IconButton, Toolbar, Typography } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MenuIcon from '@mui/icons-material/Menu';
-
-import { OpenDrawerContext } from '../../context/OpenDrawerContext';
 import { Link } from 'react-router-dom';
 
+import { OpenDrawerContext } from 'context/OpenDrawerContext';
+
 import styles from './styles.module.css';
-import logo from '../../images/freenote-logo.png';
+import logo from 'images/freenote-logo.png';
 
 const drawerWidth = 240;
 
@@ -48,39 +48,45 @@ const AppBarComponent = () => {
           pr: '24px', // keep right padding when drawer closed
         }}
       >
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="open drawer"
-          onClick={toggleDrawer}
-          sx={{
-            marginRight: '36px',
-            ...(open && { display: 'none' }),
-          }}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Link to="/">
-          <Typography
-            component="h1"
-            variant="h6"
+        <div>
+          <IconButton
+            edge="start"
             color="inherit"
-            noWrap
-            sx={{ flexGrow: 1 }}
+            aria-label="open drawer"
+            onClick={toggleDrawer}
+            sx={{
+              marginRight: '36px',
+              ...(open && { display: 'none' }),
+            }}
           >
-            <img
-              className={styles.AppBar_Logo}
-              src={logo}
-              alt="Freenote logo"
-            />
-          </Typography>
-        </Link>
-        {/* <IconButton color="inherit">
+            <MenuIcon />
+          </IconButton>
+          <Link to="/">
+            <Typography
+              component="h1"
+              variant="h6"
+              color="inherit"
+              noWrap
+              sx={{ flexGrow: 1 }}
+            >
+              <img
+                className={styles.AppBar_Logo}
+                src={logo}
+                alt="Freenote logo"
+              />
+            </Typography>
+          </Link>
+        </div>
+        <div>
+          <Link to="/signup">Signup</Link>
+          <Link to="/signin">Signin</Link>
+        </div>
+      </Toolbar>
+      {/* <IconButton color="inherit">
           <Badge badgeContent={4} color="secondary">
             <NotificationsIcon />
           </Badge>
         </IconButton> */}
-      </Toolbar>
     </AppBar>
   );
 };
