@@ -14,6 +14,7 @@ import DrawerComponent from '../src/components/Drawer';
 import AppBarComponent from '../src/components/AppBar';
 import { theme } from './styles/theme';
 import './styles/global.module.css';
+import { AuthContextProvider } from 'context/AuthContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -24,36 +25,38 @@ const App = () => {
 
   return (
     <React.StrictMode>
-      <CssBaseline />
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Box sx={{ display: 'flex' }}>
-            <OpenDrawerContext.Provider value={{ open, setOpen }}>
-              <AppBarComponent />
-              <DrawerComponent />
-            </OpenDrawerContext.Provider>
-            <Box
-              component="main"
-              sx={{
-                backgroundColor: (theme) =>
-                  theme.palette.mode === 'light'
-                    ? theme.palette.grey[100]
-                    : theme.palette.grey[900],
-                flexGrow: 1,
-                height: '100vh',
-                overflow: 'auto',
-              }}
-            >
-              {/* Use a Toolbar component to adjust spacing */}
-              <Toolbar />
-              <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                <Router />
-                <Footer />
-              </Container>
+      <AuthContextProvider>
+        <CssBaseline />
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <Box sx={{ display: 'flex' }}>
+              <OpenDrawerContext.Provider value={{ open, setOpen }}>
+                <AppBarComponent />
+                <DrawerComponent />
+              </OpenDrawerContext.Provider>
+              <Box
+                component="main"
+                sx={{
+                  backgroundColor: (theme) =>
+                    theme.palette.mode === 'light'
+                      ? theme.palette.grey[100]
+                      : theme.palette.grey[900],
+                  flexGrow: 1,
+                  height: '100vh',
+                  overflow: 'auto',
+                }}
+              >
+                {/* Use a Toolbar component to adjust spacing */}
+                <Toolbar />
+                <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                  <Router />
+                  <Footer />
+                </Container>
+              </Box>
             </Box>
-          </Box>
-        </BrowserRouter>
-      </ThemeProvider>
+          </BrowserRouter>
+        </ThemeProvider>
+      </AuthContextProvider>
     </React.StrictMode>
   );
 };
