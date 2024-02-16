@@ -40,6 +40,11 @@ const getBudget = async (value: string) => {
 
 const createBudget = async (values: budgetFormValues) => {
   try {
+    // Check if 'total' contains only numbers
+    if (!/^\d+$/.test(values.total)) {
+      throw new Error("The 'Total' field should contain only numbers");
+    }
+
     const requestBudgetValues = {
       total: values.total,
       project: values.project._id,
