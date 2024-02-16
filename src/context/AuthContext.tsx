@@ -1,11 +1,31 @@
 import React, { createContext, useEffect, useReducer } from 'react';
 
 import { Action } from 'types/action';
-import { AuthContext as AuthContextType } from 'types/authContext';
 import { AuthContextProviderProps } from 'types/authContextProviderProps';
 import { State } from 'types/state';
 
-export const AuthContext = createContext<AuthContextType | undefined>(
+type UserLoggedInfo = {
+  _id: string;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+};
+
+type UserLogin = {
+  userLogin: UserLoggedInfo;
+  token: string;
+};
+
+type AuthContextValue = {
+  user: UserLogin | null;
+  dispatch: (action: Action) => void;
+};
+
+export const AuthContext = createContext<AuthContextValue | undefined>(
   undefined,
 );
 
@@ -35,7 +55,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
   return (
     //Replace 'any' with the type of your payload object
-    <AuthContext.Provider value={{ ...state, dispatch } as any}>
+    <AuthContext.Provider value={{ user: state.user, dispatch }}>
       {children}
     </AuthContext.Provider>
   );
