@@ -10,6 +10,7 @@ import { OpenDrawerContext } from 'context/OpenDrawerContext';
 
 import styles from './styles.module.css';
 import logo from 'images/freenote-logo.png';
+import { useAuthContext } from 'hooks/useAuthContext';
 
 const drawerWidth = 240;
 
@@ -19,6 +20,7 @@ interface AppBarProps extends MuiAppBarProps {
 
 const AppBarComponent = () => {
   const { open, setOpen } = React.useContext(OpenDrawerContext);
+  const { user } = useAuthContext();
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -77,6 +79,7 @@ const AppBarComponent = () => {
             </Typography>
           </Link>
         </div>
+        {user && <div>Hi {user?.userLogin.firstName}!</div>}
         <div>
           <Link to="/signup">Signup</Link>
           <Link to="/login">Login</Link>
