@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // Import your project components here
-import Projects from '../views/Projects';
-import ProjectsSingle from '../views/Projects/Single';
+import Projects from 'views/Projects';
+import ProjectsSingle from 'views/Projects/Single';
 
-const ProjectsRouter: React.FC = () => {
+const ProjectsRouter = () => {
   return (
     <Routes>
       <Route path="/">

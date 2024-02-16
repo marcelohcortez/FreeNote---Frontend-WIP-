@@ -2,11 +2,11 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // Import your project components here
-import Budgets from '../views/Budgets';
-import BudgetsSingle from '../views/Budgets/Single';
-import AddBudget from '../views/Budgets/Add';
+import Budgets from 'views/Budgets';
+import BudgetsSingle from 'views/Budgets/Single';
+import AddBudget from 'views/Budgets/Add';
 
-const BudgetsRouter: React.FC = () => {
+const BudgetsRouter = () => {
   return (
     <Routes>
       <Route>

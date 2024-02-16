@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // Import your project components here
-import Payments from '../views/Payments';
-import PaymentsSingle from '../views/Payments/Single';
+import Payments from 'views/Payments';
+import PaymentsSingle from 'views/Payments/Single';
 
-const PaymentsRouter: React.FC = () => {
+const PaymentsRouter = () => {
   return (
     <Routes>
       <Route path="/">
