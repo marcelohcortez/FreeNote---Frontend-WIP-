@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { Alert, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 import validationSchema from 'validations/budgetValidation';
 import { budgetFormValues } from 'types/budgetFormValues';
 import { fetches } from './fetches';
 import { handleSubmit } from './handleSubmit';
+import Alerts from 'components/Alerts';
 
 const AddBudget = () => {
   const [projects, setProjects] = useState([]);
@@ -27,16 +28,7 @@ const AddBudget = () => {
   return (
     <>
       <h1>Add a new Budget</h1>
-      {success && (
-        <Alert variant="filled" severity="success">
-          Budget created successfully
-        </Alert>
-      )}
-      {error && (
-        <Alert variant="filled" severity="error">
-          Failed to create budget
-        </Alert>
-      )}
+      <Alerts successCreating={success} errorCreating={error} item="budget" />
 
       <Formik
         initialValues={{
