@@ -6,6 +6,7 @@
       "components/*": ["components/*"],
       "context/*": ["context/*"],
       "images/*": ["images/*"],
+      "hooks/*": ["hooks/*"],
       "layout/*": ["layout/*"],
       "router/*": ["router/*"],
       "styles/*": ["styles/*"],
